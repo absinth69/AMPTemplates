@@ -1,0 +1,48 @@
+[
+  {
+    "ConfigFile": "server/main/amp-server.cfg",
+    "ConfigType": "kvp",
+    "ConfigFormat": "set {0} \"{1}\"",
+    "Subsections": [
+      {
+        "Heading": "$root",
+        "SettingMappings": {
+          "sv_hostname": "sv_hostname",
+          "sv_maxclients": "sv_maxclients",
+          "sv_keywords": "sv_keywords",
+          "g_password": "g_password",
+          "rconpassword": "rconpassword",
+          "sv_privateClients": "sv_privateClients",
+          "sv_privatePassword": "sv_privatePassword",
+          "timelimit": "timelimit",
+          "fraglimit": "fraglimit",
+          "roundlimit": "roundlimit",
+          "g_healthdrop": "g_healthdrop",
+          "g_forceteamspectate": "g_forceteamspectate",
+          "g_teamkillwarn": "g_teamkillwarn",
+          "g_teamkillkick": "g_teamkillkick",
+          "g_teamswitchdelay": "g_teamswitchdelay",
+          "g_allowjointime": "g_allowjointime",
+          "g_inactivespectate": "g_inactivespectate",
+          "g_inactivekick": "g_inactivekick",
+          "sv_invulnerabletime": "sv_invulnerabletime",
+          "sv_dmspeedmult": "sv_dmspeedmult",
+          "sv_sprintmult": "sv_sprintmult",
+          "sv_sprinttime": "sv_sprinttime",
+          "sv_team_spawn_interval": "sv_team_spawn_interval",
+          "sv_floodprotect": "sv_floodprotect",
+          "sv_gamespy": "sv_gamespy",
+          "sv_minPing": "sv_minPing",
+          "sv_maxPing": "sv_maxPing",
+          "sv_minRate": "sv_minRate",
+          "sv_maxRate": "sv_maxRate",
+          "dmflags": "dmflags",
+          "sv_maplist": "sv_maplist",
+          "g_gametype": "g_gametype",
+          "g_teamdamage": "g_teamdamage",
+          "sv_sprinton": "sv_sprinton"
+        }
+      }
+    ]
+  }
+]
