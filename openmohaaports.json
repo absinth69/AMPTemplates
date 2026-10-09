@@ -1,0 +1,9 @@
+[
+    {
+        "Protocol": "UDP",
+        "Port": 12203,
+        "Ref": "ServerPort",
+        "Name": "Server Port",
+        "Description": "Game and RCON traffic; verify any additional query listeners before public deployment."
+    }
+]
