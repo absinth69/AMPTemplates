@@ -1,6 +1,6 @@
 [
   {
-    "ConfigFile": "server/main/amp-server.cfg",
+    "ConfigFile": "main/amp-server.cfg",
     "ConfigType": "kvp",
     "ConfigFormat": "set {0} \"{1}\"",
     "Subsections": [
