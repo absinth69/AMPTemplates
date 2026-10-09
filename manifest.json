@@ -1,9 +1,9 @@
 {
-	"id": "ec280171-c67b-4cf8-923f-dc27fea91ee1",
+	"id": "de97175e-7218-4b26-a0d9-2571bc8b9f43",
 	"authors": ["CubeCoders Limited", "AMP Community"],
-	"origin": "https://github.com/CubeCoders/AMPTemplates.git",
-	"url": "https://github.com/CubeCoders/AMPTemplates",
+	"origin": "https://github.com/absinth69/AMPTemplates.git",
+	"url": "https://github.com/absinth69/AMPTemplates",
 	"imagefile": "",
-	"prefix": "",
+	"prefix": "ClassicFraggers",
 	"repotype": "AppTemplates"
 }
