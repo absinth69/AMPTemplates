@@ -1,0 +1,5 @@
+[
+  {"Protocol":1,"Port":16567,"Offset":0,"Range":1,"Ref":"GamePort","Name":"Game Port"},
+  {"Protocol":1,"Port":29900,"Offset":0,"Range":1,"Ref":"GameSpyPort","Name":"GameSpy Port"},
+  {"Protocol":0,"Port":4711,"Offset":0,"Range":1,"Ref":"RCONPort","Name":"RCON Port"}
+]
