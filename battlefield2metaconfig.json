@@ -1,19 +1,8 @@
 [
   {
     "ConfigFile": "mods/bf2/settings/serversettings.con",
-    "ConfigType": "kvp",
-    "ConfigFormat": "{0} \"{1}\"",
-    "Subsections": [
-      {
-        "Heading": "$root",
-        "SettingMappings": {
-          "sv.serverName": "ServerName",
-          "sv.welcomeMessage": "WelcomeMessage",
-          "sv.password": "JoinPassword",
-          "sv.maxPlayers": "MaxPlayers",
-          "sv.internet": "Internet"
-        }
-      }
-    ]
+    "ConfigType": "template",
+    "ConfigFileTemplate": "amp-bf2-serversettings.template",
+    "AutoMap": true
   }
 ]
