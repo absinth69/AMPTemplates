@@ -1,6 +1,3 @@
-Replace the entire contents of `battlefield2config.json` with this. Only the **category** values have changed; the field names, defaults, and other properties are preserved.
-
-```json
 [
   {
     "DisplayName": "Server name",
