@@ -4,5 +4,17 @@
     "ConfigType": "template",
     "ConfigFileTemplate": "amp-bf2-serversettings.template",
     "AutoMap": true
+  },
+  {
+    "ConfigFile": "mods/bf2/settings/maplist.con",
+    "ConfigType": "template",
+    "ConfigFileTemplate": "amp-bf2-maplist.template",
+    "AutoMap": true
+  },
+  {
+    "ConfigFile": "admin/default.cfg",
+    "ConfigType": "template",
+    "ConfigFileTemplate": "amp-bf2-admin.template",
+    "AutoMap": true
   }
 ]

@@ -1,54 +1,32 @@
 [
   {
     "DisplayName": "Server name",
-    "Description": "Name shown to players. Restart the game server after changing this.",
+    "Description": "Native sv.serverName setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
     "FieldName": "ServerName",
     "InputType": "text",
-    "Category": "Server identity",
+    "Category": "Identity and access",
     "DefaultValue": "ClassicFraggers | Battlefield 2",
     "IncludeInCommandLine": false,
     "ParamFieldName": "ServerName",
     "Hidden": false
   },
   {
-    "DisplayName": "Welcome message",
-    "Description": "Server welcome message. Restart required.",
-    "FieldName": "WelcomeMessage",
-    "InputType": "text",
-    "Category": "Server identity",
-    "DefaultValue": "Welcome to ClassicFraggers!",
-    "IncludeInCommandLine": false,
-    "ParamFieldName": "WelcomeMessage",
-    "Hidden": false
-  },
-  {
-    "DisplayName": "Join password",
-    "Description": "Leave empty for a public server without a join password. Restart required.",
+    "DisplayName": "Password",
+    "Description": "Native sv.password setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
     "FieldName": "JoinPassword",
     "InputType": "password",
-    "Category": "Server access",
+    "Category": "Identity and access",
     "DefaultValue": "",
     "IncludeInCommandLine": false,
     "ParamFieldName": "JoinPassword",
     "Hidden": false
   },
   {
-    "DisplayName": "Maximum players",
-    "Description": "Maximum player count. Restart required.",
-    "FieldName": "MaxPlayers",
-    "InputType": "number",
-    "Category": "Server access",
-    "DefaultValue": "64",
-    "IncludeInCommandLine": false,
-    "ParamFieldName": "MaxPlayers",
-    "Hidden": false
-  },
-  {
-    "DisplayName": "Internet server",
-    "Description": "Select Internet for the intended public configuration. BF2Hub installation and public network access must also be verified. Restart required.",
+    "DisplayName": "Internet",
+    "Description": "Native sv.internet setting. Preserve default unless intentionally changing behavior. Restart required.",
     "FieldName": "Internet",
     "InputType": "enum",
-    "Category": "Networking",
+    "Category": "Rounds and spawning",
     "DefaultValue": "1",
     "IncludeInCommandLine": false,
     "ParamFieldName": "Internet",
@@ -57,5 +35,799 @@
       "0": "LAN",
       "1": "Internet"
     }
+  },
+  {
+    "DisplayName": "Server ip",
+    "Description": "Native sv.serverIP setting. Preserve default unless intentionally changing behavior. Must agree with AMP allocation, binding and firewall; no automatic port synchronization. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "ServerIP",
+    "InputType": "text",
+    "Category": "Networking (advanced)",
+    "DefaultValue": "",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "ServerIP",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Server port",
+    "Description": "Native sv.serverPort setting. Preserve default unless intentionally changing behavior. Must agree with AMP allocation, binding and firewall; no automatic port synchronization. Restart required.",
+    "FieldName": "ServerPort",
+    "InputType": "number",
+    "Category": "Networking (advanced)",
+    "DefaultValue": "16567",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "ServerPort",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Welcome message",
+    "Description": "Loading-screen message, not recurring chat MOTD. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "WelcomeMessage",
+    "InputType": "text",
+    "Category": "Identity and access",
+    "DefaultValue": "Welcome to ClassicFraggers!",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "WelcomeMessage",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Punk buster",
+    "Description": "Legacy toggle only; does not install or validate PunkBuster. Restart required.",
+    "FieldName": "PunkBuster",
+    "InputType": "enum",
+    "Category": "Administration (advanced)",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "PunkBuster",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Allow free cam",
+    "Description": "Native sv.allowFreeCam setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "AllowFreeCam",
+    "InputType": "enum",
+    "Category": "Player views",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "AllowFreeCam",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Allow external views",
+    "Description": "Native sv.allowExternalViews setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "AllowExternalViews",
+    "InputType": "enum",
+    "Category": "Player views",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "AllowExternalViews",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Allow nose cam",
+    "Description": "Native sv.allowNoseCam setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "AllowNoseCam",
+    "InputType": "enum",
+    "Category": "Player views",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "AllowNoseCam",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Hit indicator",
+    "Description": "Native sv.hitIndicator setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "HitIndicator",
+    "InputType": "enum",
+    "Category": "Player views",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "HitIndicator",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Max players",
+    "Description": "Native sv.maxPlayers setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "MaxPlayers",
+    "InputType": "number",
+    "Category": "Identity and access",
+    "DefaultValue": "64",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "MaxPlayers",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Num players needed to start",
+    "Description": "Native sv.numPlayersNeededToStart setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "NumPlayersNeededToStart",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "2",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "NumPlayersNeededToStart",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Not enough players restart delay",
+    "Description": "Native sv.notEnoughPlayersRestartDelay setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "NotEnoughPlayersRestartDelay",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "15",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "NotEnoughPlayersRestartDelay",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Start delay",
+    "Description": "Native sv.startDelay setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "StartDelay",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "15",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "StartDelay",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "End delay",
+    "Description": "Native sv.endDelay setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "EndDelay",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "15",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "EndDelay",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Spawn time",
+    "Description": "Native sv.spawnTime setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "SpawnTime",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "15",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "SpawnTime",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Man down time",
+    "Description": "Native sv.manDownTime setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "ManDownTime",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "15",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "ManDownTime",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "End of round delay",
+    "Description": "Native sv.endOfRoundDelay setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "EndOfRoundDelay",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "15",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "EndOfRoundDelay",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Ticket ratio",
+    "Description": "Native sv.ticketRatio setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "TicketRatio",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "100",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "TicketRatio",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Rounds per map",
+    "Description": "Native sv.roundsPerMap setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "RoundsPerMap",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "3",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "RoundsPerMap",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Time limit",
+    "Description": "Native sv.timeLimit setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "TimeLimit",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "TimeLimit",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Score limit",
+    "Description": "Legacy/mode-specific setting; retain the default unless verified for your game mode. Restart required.",
+    "FieldName": "ScoreLimit",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "ScoreLimit",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Soldier friendly fire",
+    "Description": "Native sv.soldierFriendlyFire setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "SoldierFriendlyFire",
+    "InputType": "number",
+    "Category": "Friendly fire",
+    "DefaultValue": "100",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "SoldierFriendlyFire",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Vehicle friendly fire",
+    "Description": "Native sv.vehicleFriendlyFire setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "VehicleFriendlyFire",
+    "InputType": "number",
+    "Category": "Friendly fire",
+    "DefaultValue": "100",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VehicleFriendlyFire",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Soldier splash friendly fire",
+    "Description": "Native sv.soldierSplashFriendlyFire setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "SoldierSplashFriendlyFire",
+    "InputType": "number",
+    "Category": "Friendly fire",
+    "DefaultValue": "100",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "SoldierSplashFriendlyFire",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Vehicle splash friendly fire",
+    "Description": "Native sv.vehicleSplashFriendlyFire setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "VehicleSplashFriendlyFire",
+    "InputType": "number",
+    "Category": "Friendly fire",
+    "DefaultValue": "100",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VehicleSplashFriendlyFire",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Tk punish enabled",
+    "Description": "Native sv.tkPunishEnabled setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "TkPunishEnabled",
+    "InputType": "enum",
+    "Category": "Teamkill punishment",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "TkPunishEnabled",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Tk num punish to kick",
+    "Description": "Native sv.tkNumPunishToKick setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "TkNumPunishToKick",
+    "InputType": "number",
+    "Category": "Teamkill punishment",
+    "DefaultValue": "3",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "TkNumPunishToKick",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Tk punish by default",
+    "Description": "Native sv.tkPunishByDefault setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "TkPunishByDefault",
+    "InputType": "enum",
+    "Category": "Teamkill punishment",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "TkPunishByDefault",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Voting enabled",
+    "Description": "Native sv.votingEnabled setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "VotingEnabled",
+    "InputType": "enum",
+    "Category": "Voting",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VotingEnabled",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Vote time",
+    "Description": "Native sv.voteTime setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "VoteTime",
+    "InputType": "number",
+    "Category": "Voting",
+    "DefaultValue": "90",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoteTime",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Min players for voting",
+    "Description": "Native sv.minPlayersForVoting setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "MinPlayersForVoting",
+    "InputType": "number",
+    "Category": "Voting",
+    "DefaultValue": "2",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "MinPlayersForVoting",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Team vote only",
+    "Description": "Native sv.teamVoteOnly setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "TeamVoteOnly",
+    "InputType": "enum",
+    "Category": "Voting",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "TeamVoteOnly",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Game spy port",
+    "Description": "Native sv.gameSpyPort setting. Preserve default unless intentionally changing behavior. Must agree with AMP allocation, binding and firewall; no automatic port synchronization. Restart required.",
+    "FieldName": "GameSpyPort",
+    "InputType": "number",
+    "Category": "Networking (advanced)",
+    "DefaultValue": "29900",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "GameSpyPort",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Allow natnegotiation",
+    "Description": "Native sv.allowNATNegotiation setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "AllowNATNegotiation",
+    "InputType": "enum",
+    "Category": "Networking (advanced)",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "AllowNATNegotiation",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Interface ip",
+    "Description": "Native sv.interfaceIP setting. Preserve default unless intentionally changing behavior. Must agree with AMP allocation, binding and firewall; no automatic port synchronization. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "InterfaceIP",
+    "InputType": "text",
+    "Category": "Networking (advanced)",
+    "DefaultValue": "",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "InterfaceIP",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Auto record",
+    "Description": "Configure storage, hosting and retention separately. Restart required.",
+    "FieldName": "AutoRecord",
+    "InputType": "enum",
+    "Category": "BattleRecorder",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "AutoRecord",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Demo index url",
+    "Description": "Native sv.demoIndexURL setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "DemoIndexURL",
+    "InputType": "text",
+    "Category": "BattleRecorder",
+    "DefaultValue": "http://",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "DemoIndexURL",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Demo download url",
+    "Description": "Native sv.demoDownloadURL setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "DemoDownloadURL",
+    "InputType": "text",
+    "Category": "BattleRecorder",
+    "DefaultValue": "http://",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "DemoDownloadURL",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Auto demo hook",
+    "Description": "Native sv.autoDemoHook setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "AutoDemoHook",
+    "InputType": "text",
+    "Category": "BattleRecorder",
+    "DefaultValue": "adminutils/demo/rotate_demo.py",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "AutoDemoHook",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Demo quality",
+    "Description": "Native sv.demoQuality setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "DemoQuality",
+    "InputType": "number",
+    "Category": "BattleRecorder",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "DemoQuality",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Admin script",
+    "Description": "Keep default unless an alternative admin script is installed. ModManager is not bundled. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "AdminScript",
+    "InputType": "text",
+    "Category": "Administration (advanced)",
+    "DefaultValue": "default",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "AdminScript",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Time before restart map",
+    "Description": "Native sv.timeBeforeRestartMap setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "TimeBeforeRestartMap",
+    "InputType": "number",
+    "Category": "Rounds and spawning",
+    "DefaultValue": "30",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "TimeBeforeRestartMap",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Auto balance team",
+    "Description": "Native sv.autoBalanceTeam setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "AutoBalanceTeam",
+    "InputType": "enum",
+    "Category": "Teams",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "AutoBalanceTeam",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Team ratio percent",
+    "Description": "Native sv.teamRatioPercent setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "TeamRatioPercent",
+    "InputType": "number",
+    "Category": "Teams",
+    "DefaultValue": "100",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "TeamRatioPercent",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Coop bot ratio",
+    "Description": "Native sv.coopBotRatio setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "CoopBotRatio",
+    "InputType": "number",
+    "Category": "Co-op bots",
+    "DefaultValue": "50",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "CoopBotRatio",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Coop bot count",
+    "Description": "Native sv.coopBotCount setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "CoopBotCount",
+    "InputType": "number",
+    "Category": "Co-op bots",
+    "DefaultValue": "16",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "CoopBotCount",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Coop bot difficulty",
+    "Description": "Native sv.coopBotDifficulty setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "CoopBotDifficulty",
+    "InputType": "number",
+    "Category": "Co-op bots",
+    "DefaultValue": "50",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "CoopBotDifficulty",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Voip enabled",
+    "Description": "Native sv.voipEnabled setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "VoipEnabled",
+    "InputType": "enum",
+    "Category": "Voice (advanced)",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoipEnabled",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Voip quality",
+    "Description": "Native sv.voipQuality setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "VoipQuality",
+    "InputType": "number",
+    "Category": "Voice (advanced)",
+    "DefaultValue": "3",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoipQuality",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Voip server remote",
+    "Description": "Native sv.voipServerRemote setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "VoipServerRemote",
+    "InputType": "enum",
+    "Category": "Voice (advanced)",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoipServerRemote",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Voip server remote ip",
+    "Description": "Native sv.voipServerRemoteIP setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "VoipServerRemoteIP",
+    "InputType": "text",
+    "Category": "Voice (advanced)",
+    "DefaultValue": "",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoipServerRemoteIP",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Voip server port",
+    "Description": "Native sv.voipServerPort setting. Preserve default unless intentionally changing behavior. Must agree with AMP allocation, binding and firewall; no automatic port synchronization. Restart required.",
+    "FieldName": "VoipServerPort",
+    "InputType": "number",
+    "Category": "Voice (advanced)",
+    "DefaultValue": "55125",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoipServerPort",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Voip bfclient port",
+    "Description": "Native sv.voipBFClientPort setting. Preserve default unless intentionally changing behavior. Must agree with AMP allocation, binding and firewall; no automatic port synchronization. Restart required.",
+    "FieldName": "VoipBFClientPort",
+    "InputType": "number",
+    "Category": "Voice (advanced)",
+    "DefaultValue": "55123",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoipBFClientPort",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Voip bfserver port",
+    "Description": "Native sv.voipBFServerPort setting. Preserve default unless intentionally changing behavior. Must agree with AMP allocation, binding and firewall; no automatic port synchronization. Restart required.",
+    "FieldName": "VoipBFServerPort",
+    "InputType": "number",
+    "Category": "Voice (advanced)",
+    "DefaultValue": "55124",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoipBFServerPort",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Voip shared password",
+    "Description": "Native sv.voipSharedPassword setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "VoipSharedPassword",
+    "InputType": "password",
+    "Category": "Voice (advanced)",
+    "DefaultValue": "",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "VoipSharedPassword",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Use global rank",
+    "Description": "Does not grant ranked status or install a stats backend. Restart required.",
+    "FieldName": "UseGlobalRank",
+    "InputType": "enum",
+    "Category": "Rank and unlocks",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "UseGlobalRank",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Use global unlocks",
+    "Description": "Availability depends on backend, account and mod. Restart required.",
+    "FieldName": "UseGlobalUnlocks",
+    "InputType": "enum",
+    "Category": "Rank and unlocks",
+    "DefaultValue": "1",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "UseGlobalUnlocks",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Sponsor text",
+    "Description": "Native sv.sponsorText setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "SponsorText",
+    "InputType": "text",
+    "Category": "Branding",
+    "DefaultValue": "",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "SponsorText",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Sponsor logo url",
+    "Description": "Native sv.sponsorLogoURL setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "SponsorLogoURL",
+    "InputType": "text",
+    "Category": "Branding",
+    "DefaultValue": "",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "SponsorLogoURL",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Community logo url",
+    "Description": "Native sv.communityLogoURL setting. Preserve default unless intentionally changing behavior. Avoid double quotes and line breaks. Restart required.",
+    "FieldName": "CommunityLogoURL",
+    "InputType": "text",
+    "Category": "Branding",
+    "DefaultValue": "",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "CommunityLogoURL",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Radio spam interval",
+    "Description": "Native sv.radioSpamInterval setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "RadioSpamInterval",
+    "InputType": "number",
+    "Category": "Radio spam",
+    "DefaultValue": "6",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "RadioSpamInterval",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Radio max spam flag count",
+    "Description": "Native sv.radioMaxSpamFlagCount setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "RadioMaxSpamFlagCount",
+    "InputType": "number",
+    "Category": "Radio spam",
+    "DefaultValue": "6",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "RadioMaxSpamFlagCount",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Radio blocked duration time",
+    "Description": "Native sv.radioBlockedDurationTime setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "RadioBlockedDurationTime",
+    "InputType": "number",
+    "Category": "Radio spam",
+    "DefaultValue": "30",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "RadioBlockedDurationTime",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Friendly fire with mines",
+    "Description": "Native sv.friendlyFireWithMines setting. Preserve default unless intentionally changing behavior. Restart required.",
+    "FieldName": "FriendlyFireWithMines",
+    "InputType": "enum",
+    "Category": "Friendly fire",
+    "DefaultValue": "0",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "FriendlyFireWithMines",
+    "Hidden": false,
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
+  },
+  {
+    "DisplayName": "Map rotation",
+    "Description": "One mapList.append line per map; use installed map folders, supported modes and sizes. Replaces the entire map list. Restart required.",
+    "FieldName": "MapRotation",
+    "InputType": "Textarea",
+    "Category": "Map rotation",
+    "DefaultValue": "mapList.append strike_at_karkand gpm_cq 32",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "MapRotation",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "RCON TCP port",
+    "Description": "Match AMP allocation and firewall. Restrict access. Does not configure AMP admin integration. Restart required.",
+    "FieldName": "RconPort",
+    "InputType": "number",
+    "Category": "Native RCON",
+    "DefaultValue": "4711",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "RconPort",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "RCON password",
+    "Description": "Set a unique strong password BEFORE starting. No shared default. Avoid whitespace, quotes and line breaks. Do not expose RCON publicly. Restart required.",
+    "FieldName": "RconPassword",
+    "InputType": "password",
+    "Category": "Native RCON",
+    "DefaultValue": "",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "RconPassword",
+    "Hidden": false
   }
 ]
