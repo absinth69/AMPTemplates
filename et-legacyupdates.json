@@ -26,7 +26,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://etlegacy.com\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win64 archive' | Out-Null; $DOWNLOAD_URL = $matches; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://www.etlegacy.com/download\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win64 archive' | Out-Null; $DOWNLOAD_URL = $matches; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "x86_64",
         "SkipOnFailure": false
@@ -36,7 +36,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://etlegacy.com\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win32 archive' | Out-Null; $DOWNLOAD_URL = $matches; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://www.etlegacy.com/download\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win32 archive' | Out-Null; $DOWNLOAD_URL = $matches; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "i386",
         "SkipOnFailure": false
@@ -100,24 +100,11 @@
         "SkipOnFailure": false
     },
     {
-        "UpdateStageName": "Client Files Download",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "FetchURL",
-        "UpdateSourceData": "https://splashdamage.com",
-        "UpdateSourceTarget": "{{$FullRootDir}}client",
-        "UnzipUpdateSource": true,
-        "OverwriteExistingFiles": true,
-        "DeleteAfterExtract": true,
-        "UpdateSourceConditionSetting": "DisableWETDownload",
-        "UpdateSourceConditionValue": "false",
-        "SkipOnFailure": false
-    },
-    {
         "UpdateStageName": "Client Files Installation",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd et-legacy/client && chmod +x ./*.x86_keygen_V03.run && ./*.x86_keygen_V03.run --tar xvf ./etmain/ >/dev/null 2>&1 && cd .. && \\cp -rf client/etmain/pak*.pk3 server/etmain/ >/dev/null 2>&1 && rm -rf client >/dev/null 2>&1\"",
+        "UpdateSourceArgs": "-c \"mkdir -p et-legacy/server/etmain && cd et-legacy/server/etmain && for f in pak0.pk3 pak1.pk3 pak2.pk3; do [ -f \\\"$f\\\" ] || curl -fsSL -o \\\"$f\\\" \\\"https://etlegacy.com\\\"; done && rm -rf ../../client\"",
         "UpdateSourceConditionSetting": "DisableWETDownload",
         "UpdateSourceConditionValue": "false",
         "SkipOnFailure": false
