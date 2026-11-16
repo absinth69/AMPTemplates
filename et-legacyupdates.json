@@ -18,7 +18,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'et-legacy/7-Zip'; if (Test-Path '7z.exe') { exit 0 } else { Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/ip7z/7zip/releases/download/26.00/7z2600-x64.exe' -OutFile '7z-installer.exe' }; if ($?) { Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/ip7z/7zip/releases/download/26.00/7zr.exe' -OutFile '7zr.exe' }; if ($?) { & ./7zr.exe x -y -aoa 7z-installer.exe *> $null 2>&1; Remove-Item -Path '7z-installer.exe' -Force -ErrorAction SilentlyContinue | Out-Null }\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'et-legacy/7-Zip'; if (Test-Path '7z.exe') { exit 0 } else { Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com' -OutFile '7z-installer.exe' }; if ($?) { Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com' -OutFile '7zr.exe' }; if ($?) { & ./7zr.exe x -y -aoa 7z-installer.exe *> $null 2>&1; Remove-Item -Path '7z-installer.exe' -Force -ErrorAction SilentlyContinue | Out-Null }\"",
         "SkipOnFailure": false
     },
     {
@@ -26,7 +26,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -UseBasicParsing -Uri 'https://etlegacy.com' -OutFile 'et-legacy.zip'\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://www.etlegacy.com/download\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win64 archive' | Out-Null; $DOWNLOAD_URL = $matches[1]; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "x86_64",
         "SkipOnFailure": false
@@ -36,7 +36,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -UseBasicParsing -Uri 'https://etlegacy.com' -OutFile 'et-legacy.zip'\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://www.etlegacy.com/download\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win32 archive' | Out-Null; $DOWNLOAD_URL = $matches[1]; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "i386",
         "SkipOnFailure": false
@@ -59,12 +59,12 @@
         "UpdateSourceArgs": "-NoProfile -Command \"Set-Location -Path 'et-legacy'; $directory = Get-ChildItem -Directory -Filter \\\"etlegacy-*\\\"; Rename-Item $directory.FullName -NewName \\\"etl\\\"; @('etl_server.cfg', 'legacy.cfg') | ForEach-Object { if (Test-Path \\\"server/etmain/$_\\\") { Remove-Item -Path \\\"etl/etmain/$_\\\" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null } }; Copy-Item -Path 'etl/*' -Destination 'server' -Recurse -Force -ErrorAction SilentlyContinue | Out-Null; Remove-Item -Path 'etl' -Recurse -Force -ErrorAction SilentlyContinue | Out-Null\"",
         "SkipOnFailure": false
     },
-   {
+    {
         "UpdateStageName": "Server Download",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && wget -qO et-legacy.tar.gz \\\"https://etlegacy.com\\\" && tar -xzf et-legacy.tar.gz >/dev/null 2>&1 && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\" >/dev/null 2>&1; done; \\cp -rf etl/* server/ >/dev/null 2>&1 && rm -rf etl et-legacy.tar.gz >/dev/null 2>&1\"",
+        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && DOWNLOAD_URL=$(python3 -c 'import urllib.request, re; html=urllib.request.urlopen(urllib.request.Request(\\\"https://www.etlegacy.com/download\\\", headers={\\\"User-Agent\\\":\\\"Mozilla/5.0\\\"})).read().decode(); m=re.findall(r\\\"(https://www\\\\.etlegacy\\\\.com/download/file/\\\\d+)[\\\\s\\\\S]{0,120}?etlegacy-v[0-9.]+-x86_64\\\\.tar\\\\.gz\\\", html); print(m[-1] if m else \\\"\\\")') && wget -q --user-agent=\\\"Mozilla/5.0\\\" -O et-legacy.tar.gz \\\"$DOWNLOAD_URL\\\" && tar -xzf et-legacy.tar.gz >/dev/null 2>&1 && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\" >/dev/null 2>&1; done; \\cp -rf etl/* server/ >/dev/null 2>&1 && rm -rf etl et-legacy.tar.gz >/dev/null 2>&1\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "x86_64",
         "SkipOnFailure": false
@@ -74,7 +74,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && wget -qO et-legacy.tar.gz \\\"https://etlegacy.com\\\" && tar -xzf et-legacy.tar.gz >/dev/null 2>&1 && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\" >/dev/null 2>&1; done; \\cp -rf etl/* server/ >/dev/null 2>&1 && rm -rf etl et-legacy.tar.gz >/dev/null 2>&1\"",
+        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && DOWNLOAD_URL=$(python3 -c 'import urllib.request, re; html=urllib.request.urlopen(urllib.request.Request(\\\"https://www.etlegacy.com/download\\\", headers={\\\"User-Agent\\\":\\\"Mozilla/5.0\\\"})).read().decode(); m=re.findall(r\\\"(https://www\\\\.etlegacy\\\\.com/download/file/\\\\d+)[\\\\s\\\\S]{0,120}?etlegacy-v[0-9.]+-i386\\\\.tar\\\\.gz\\\", html); print(m[-1] if m else \\\"\\\")') && wget -q --user-agent=\\\"Mozilla/5.0\\\" -O et-legacy.tar.gz \\\"$DOWNLOAD_URL\\\" && tar -xzf et-legacy.tar.gz >/dev/null 2>&1 && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\" >/dev/null 2>&1; done; \\cp -rf etl/* server/ >/dev/null 2>&1 && rm -rf etl et-legacy.tar.gz >/dev/null 2>&1\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "i386",
         "SkipOnFailure": false
@@ -83,7 +83,7 @@
         "UpdateStageName": "Client Files Download",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "FetchURL",
-        "UpdateSourceData": "https://cdn.splashdamage.com/downloads/games/wet/WolfET_2_60b_custom.exe",
+        "UpdateSourceData": "https://splashdamage.com",
         "UpdateSourceTarget": "{{$FullRootDir}}client",
         "OverwriteExistingFiles": true,
         "UpdateSourceConditionSetting": "DisableWETDownload",
@@ -103,7 +103,7 @@
         "UpdateStageName": "Client Files Download",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "FetchURL",
-        "UpdateSourceData": "https://cdn.splashdamage.com/downloads/games/wet/et260b.x86_full.zip",
+        "UpdateSourceData": "https://splashdamage.com",
         "UpdateSourceTarget": "{{$FullRootDir}}client",
         "UnzipUpdateSource": true,
         "OverwriteExistingFiles": true,
