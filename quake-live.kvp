@@ -1,5 +1,6 @@
-Meta.DisplayName=Quake Live
-Meta.Description=Quake Live Dedicated Server
+Meta.DisplayName=Quake Live (Fixed)
+Meta.Description=Quake Live Dedicated Server (Fixed)
+Meta.Id=2119dfc1-a407-4e7c-868f-29fca69359fd
 Meta.OS=Linux
 Meta.AarchSupport=NotSupported
 Meta.Arch=x86_64
@@ -36,7 +37,7 @@ App.WorkingDir=qlds/349090
 App.ExecutableLinux=./run_server_x64.sh
 App.LinuxCommandLineArgs=
 App.WindowsCommandLineArgs=
-App.CommandLineArgs={{$PlatformArgs}} +set net_strict 1 +set fs_homepath "{{$FullBaseDir}}" +set sv_master {{sv_master}} +set net_port {{$ServerPort}} +set zmq_stats_port {{$ServerPort}} +set zmq_rcon_port {{$RCONPort}} +set net_ip {{$ApplicationIPBinding}} +set zmq_stats_ip {{$ApplicationIPBinding}} +set zmq_rcon_ip {{$ApplicationIPBinding}} +set zmq_stats_enable {{zmq_stats_enable}} +set zmq_stats_password "{{zmq_stats_password}}" +set zmq_rcon_enable {{zmq_rcon_enable}} +set zmq_rcon_password "{{zmq_rcon_password}}" {{$FormattedArgs}}
+App.CommandLineArgs=+set net_strict 1 +set net_port {{$ApplicationPort1}} +set fs_homepath {{$FullBaseDir}}qlds/349090 +exec server.cfg
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
 App.EnvironmentVariables={"LD_LIBRARY_PATH":"{{$FullBaseDir}}linux64:%LD_LIBRARY_PATH%","SteamAppId":"282440"}
