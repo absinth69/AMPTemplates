@@ -1,6 +1,5 @@
 Meta.DisplayName=Quake Live (Fixed)
 Meta.Description=Quake Live Dedicated Server (Fixed)
-Meta.Id=2119dfc1-a407-4e7c-868f-29fca69359fd
 Meta.OS=Linux
 Meta.AarchSupport=NotSupported
 Meta.Arch=x86_64
@@ -25,7 +24,7 @@ Meta.NoCommercialUsage=False
 Meta.ConfigVersion=1
 Meta.ReleaseNotes=
 Meta.BreakingReleaseNotes=
-Meta.AppConfigId=44743d77-688a-4f7e-aa56-9a06dd8c7d2b
+Meta.AppConfigId=2119dfc1-a407-4e7c-868f-29fca69359fd
 Meta.ImportableExtensions=[".cfg"]
 Meta.AppIsMultiIPAware=True
 App.DisplayName=Quake Live
