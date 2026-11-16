@@ -64,7 +64,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && python3 -c 'import base64; exec(base64.b64decode(\\\"aW1wb3J0IHVybGxpYi5yZXF1ZXN0LCByZQpoID0ge1wiVXNlci1BZ2VudFwiOiBcIk1vemlsbGEvNS4wXCIsIFwiUmVmZXJlclwiOiBcImh0dHBzOi8vd3d3LmV0bGVnYWN5LmNvbS9kb3dubG9hZFwifQpodG1sID0gdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KFwiaHR0cHM6Ly93d3cuZXRsZWdhY3kuY29tL2Rvd25sb2FkXCIsIGhlYWRlcnM9aCkpLnJlYWQoKS5kZWNvZGUoKQptID0gcmUuZmluZGFsbChyJyhodHRwczovL1teXHNcIl0rL2Rvd25sb2FkL2ZpbGUvXGQrKSg/Oig/IS9kb3dubG9hZC9maWxlLykuKXswLDMwMH0/ZXRsZWdhY3ktdlswLTkuXSsteDg2XzY0XC50YXJcLmd6JywgaHRtbCwgcmUuUykKZGF0YSA9IHVybGxpYi5yZXF1ZXN0LnVybG9wZW4odXJsbGliLnJlcXVlc3QuUmVxdWVzdChtWzBdLCBoZWFkZXJzPWgpKS5yZWFkKCkKb3BlbihcImV0LWxlZ2FjeS50YXIuZ3pcIiwgXCJ3YlwiKS53cml0ZShkYXRhKQ==\\\"))' && tar -xzf et-legacy.tar.gz && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\"; done; \\cp -rf etl/* server/ && rm -rf etl et-legacy.tar.gz\"",
+        "UpdateSourceArgs": "/home/amp/install-etl.sh x86_64",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "x86_64",
         "SkipOnFailure": false
@@ -74,7 +74,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && python3 -c 'import base64; exec(base64.b64decode(\\\"aW1wb3J0IHVybGxpYi5yZXF1ZXN0LCByZQpoID0ge1wiVXNlci1BZ2VudFwiOiBcIk1vemlsbGEvNS4wXCIsIFwiUmVmZXJlclwiOiBcImh0dHBzOi8vd3d3LmV0bGVnYWN5LmNvbS9kb3dubG9hZFwifQpodG1sID0gdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KFwiaHR0cHM6Ly93d3cuZXRsZWdhY3kuY29tL2Rvd25sb2FkXCIsIGhlYWRlcnM9aCkpLnJlYWQoKS5kZWNvZGUoKQptID0gcmUuZmluZGFsbChyJyhodHRwczovL1teXHNcIl0rL2Rvd25sb2FkL2ZpbGUvXGQrKSg/Oig/IS9kb3dubG9hZC9maWxlLykuKXswLDMwMH0/ZXRsZWdhY3ktdlswLTkuXSstaTM4NlwudGFyXC5neicsIGh0bWwsIHJlLlMpCmRhdGEgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QobVswXSwgaGVhZGVycz1oKSkucmVhZCgpCm9wZW4oXCJldC1sZWdhY3kudGFyLmd6XCIsIFwid2JcIikud3JpdGUoZGF0YSk=\\\"))' && tar -xzf et-legacy.tar.gz && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\"; done; \\cp -rf etl/* server/ && rm -rf etl et-legacy.tar.gz\"",
+        "UpdateSourceArgs": "/home/amp/install-etl.sh i386",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "i386",
         "SkipOnFailure": false
