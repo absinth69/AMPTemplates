@@ -1,5 +1,5 @@
-Meta.DisplayName=ET: Legacy
-Meta.Description=ET: Legacy Dedicated Server - a Wolfenstein: Enemy Territory server
+Meta.DisplayName=ET: Legacy (Fixed)
+Meta.Description=ET: Legacy Dedicated Server - a Wolfenstein: Enemy Territory server (Fixed)
 Meta.OS=Windows, Linux
 Meta.AarchSupport=NotSupported
 Meta.Arch=x86_64
@@ -24,7 +24,7 @@ Meta.NoCommercialUsage=False
 Meta.ConfigVersion=1
 Meta.ReleaseNotes=
 Meta.BreakingReleaseNotes=
-Meta.AppConfigId=9af43196-9319-480e-b2db-c3c3bd7101eb
+Meta.AppConfigId=80f53ab6-a308-4b22-8956-4fe954d020c0
 Meta.ImportableExtensions=[]
 Meta.AppIsMultiIPAware=True
 App.DisplayName=ET: Legacy
