@@ -26,7 +26,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://www.etlegacy.com/download\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win64 archive' | Out-Null; $DOWNLOAD_URL = $matches; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://etlegacy.com\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win64 archive' | Out-Null; $DOWNLOAD_URL = $matches[1]; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "x86_64",
         "SkipOnFailure": false
@@ -36,7 +36,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://www.etlegacy.com/download\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win32 archive' | Out-Null; $DOWNLOAD_URL = $matches; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (Invoke-WebRequest -Uri \\\"https://etlegacy.com\\\" -UseBasicParsing).Content -match 'data-href=\\\"([^\\\"]+)\\\"[^>]*>Win32 archive' | Out-Null; $DOWNLOAD_URL = $matches[1]; Invoke-WebRequest -UseBasicParsing -Uri $DOWNLOAD_URL -OutFile 'et-legacy.zip'\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "i386",
         "SkipOnFailure": false
@@ -64,7 +64,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && DOWNLOAD_URL=$(python3 -c 'import urllib.request, re, base64; u=base64.b64decode(\\\"aHR0cHM6Ly93d3cuZXRsZWdhY3kuY29tL2Rvd25sb2Fk\\\").decode(); html=urllib.request.urlopen(urllib.request.Request(u, headers={\\\"User-Agent\\\":\\\"Mozilla/5.0\\\"})).read().decode(); m=re.findall(r\\\"(https://[^\\\\\\\"'\\'' ]+/download/file/\\\\d+)(?:(?!/download/file/).){0,300}?etlegacy-v[0-9.]+-x86_64\\\\.tar\\\\.gz\\\", html, re.S); print(m if m else \\\"\\\")') && wget -q --user-agent=\\\"Mozilla/5.0\\\" -O et-legacy.tar.gz \\\"$DOWNLOAD_URL\\\" && tar -xzf et-legacy.tar.gz >/dev/null 2>&1 && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\" >/dev/null 2>&1; done; \\cp -rf etl/* server/ >/dev/null 2>&1 && rm -rf etl et-legacy.tar.gz >/dev/null 2>&1\"",
+        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && DOWNLOAD_URL=$(python3 -c 'import urllib.request, re, base64; u=base64.b64decode(\\\"aHR0cHM6Ly93d3cuZXRsZWdhY3kuY29tL2Rvd25sb2Fk\\\").decode(); html=urllib.request.urlopen(urllib.request.Request(u, headers={\\\"User-Agent\\\":\\\"Mozilla/5.0\\\"})).read().decode(); m=re.findall(r\\\"(https://[^\\\\\\\"'\\'' ]+/download/file/\\\\d+)(?:(?!/download/file/).){0,300}?etlegacy-v[0-9.]+-x86_64\\\\.tar\\\\.gz\\\", html, re.S); print(\\\"\\\".join(m[:1]))') && wget -q --user-agent=\\\"Mozilla/5.0\\\" -O et-legacy.tar.gz \\\"$DOWNLOAD_URL\\\" && tar -xzf et-legacy.tar.gz >/dev/null 2>&1 && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\" >/dev/null 2>&1; done; \\cp -rf etl/* server/ >/dev/null 2>&1 && rm -rf etl et-legacy.tar.gz >/dev/null 2>&1\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "x86_64",
         "SkipOnFailure": false
@@ -74,7 +74,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && DOWNLOAD_URL=$(python3 -c 'import urllib.request, re, base64; u=base64.b64decode(\\\"aHR0cHM6Ly93d3cuZXRsZWdhY3kuY29tL2Rvd25sb2Fk\\\").decode(); html=urllib.request.urlopen(urllib.request.Request(u, headers={\\\"User-Agent\\\":\\\"Mozilla/5.0\\\"})).read().decode(); m=re.findall(r\\\"(https://[^\\\\\\\"'\\'' ]+/download/file/\\\\d+)(?:(?!/download/file/).){0,300}?etlegacy-v[0-9.]+-i386\\\\.tar\\\\.gz\\\", html, re.S); print(m if m else \\\"\\\")') && wget -q --user-agent=\\\"Mozilla/5.0\\\" -O et-legacy.tar.gz \\\"$DOWNLOAD_URL\\\" && tar -xzf et-legacy.tar.gz >/dev/null 2>&1 && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\" >/dev/null 2>&1; done; \\cp -rf etl/* server/ >/dev/null 2>&1 && rm -rf etl et-legacy.tar.gz >/dev/null 2>&1\"",
+        "UpdateSourceArgs": "-c \"cd et-legacy && mkdir -p server && DOWNLOAD_URL=$(python3 -c 'import urllib.request, re, base64; u=base64.b64decode(\\\"aHR0cHM6Ly93d3cuZXRsZWdhY3kuY29tL2Rvd25sb2Fk\\\").decode(); html=urllib.request.urlopen(urllib.request.Request(u, headers={\\\"User-Agent\\\":\\\"Mozilla/5.0\\\"})).read().decode(); m=re.findall(r\\\"(https://[^\\\\\\\"'\\'' ]+/download/file/\\\\d+)(?:(?!/download/file/).){0,300}?etlegacy-v[0-9.]+-i386\\\\.tar\\\\.gz\\\", html, re.S); print(\\\"\\\".join(m[:1]))') && wget -q --user-agent=\\\"Mozilla/5.0\\\" -O et-legacy.tar.gz \\\"$DOWNLOAD_URL\\\" && tar -xzf et-legacy.tar.gz >/dev/null 2>&1 && mv etlegacy-* etl && for file in etl_server.cfg legacy.cfg; do [ -e \\\"server/etmain/$file\\\" ] && rm -f \\\"etl/etmain/$file\\\" >/dev/null 2>&1; done; \\cp -rf etl/* server/ >/dev/null 2>&1 && rm -rf etl et-legacy.tar.gz >/dev/null 2>&1\"",
         "UpdateSourceConditionSetting": "ServerVersion",
         "UpdateSourceConditionValue": "i386",
         "SkipOnFailure": false
